@@ -1,0 +1,72 @@
+<!-- <p>event works!</p> -->
+<html>
+<head>
+  
+<!-- <title>event works!</title> -->
+</head>
+<body>
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <h2>Event</h2>
+  
+      </div>
+    </div>
+  </div>
+    <div class="row"></div>
+    <div class="col-md-12">
+        <div class="card" class="text-center">
+            <div class="col-md-8" id="htmlData"></div>
+            <div>
+              <input class="form-control" placeholder="Search" type="text" [(ngModel)]="SearchVal" (keyup)="Search()">
+            </div>
+                 <table class="table">
+                  <thead style="background-color: rgb(192, 183, 183);">
+                    <th>Name</th>
+                    <th>Date Event</th>
+                    <th>Number Inscription</th>
+                    <th>Event Category</th>
+                    <th>Actions</th>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor='let r of listEvent'>
+                        <td>{{r.nom}}</td>
+                        <td>{{r.dateEvent | date}} </td>
+                        <td>{{r.nbrInscri}}</td>
+                        <td>{{r.catt}}</td>
+                        <td>
+                             <button type="button" class="btn btn-outline-primary" 
+                            (click)="open()">edit</button> 
+                            <ng-template #mymodal let-modal>...
+                            </ng-template>
+                            <button type="button" class="btn btn-outline-danger"
+                                (click)="deleteEvent(r.idEvent)">delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                         <!-- <button class="btn btn-danger" (click)="open(content)">
+                            add event
+                        </button>  -->
+                         <a  class="btn btn-danger btn-round" routerLink="/add-form">add event</a>   
+                    </tr>
+                    
+                </tbody> 
+            </table>
+            <!-- <button type="button" class="btn btn-primary btn-lg btn-block" (click)="openPDF()">Download PDF</button> -->
+            <div>
+              <button type="button"  class="btn btn-danger btn-round" (click)="triEvent()">Rank </button>
+            </div>
+        </div>
+    </div>
+            <!-- <div>
+                <ng-template #content let-modal>
+                  <div class="modal-body">
+                    <app-add-form
+                    (submit)="create($event)"
+                    ></app-add-form>
+                  </div>
+                </ng-template>
+           </div> -->
+                 
+</body>
+</html>
