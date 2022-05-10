@@ -32,4 +32,13 @@ export class EventService {
     triEvent(){
         return this.httpClient.get<Eventt[]>(`${this.API_URL}/tri-event`);
     }
+    triEventt(){
+        return this.httpClient.get("http://localhost:8068/SpringMVC/event/tri-event");
+    }
+    getInscriptions(id:number)
+    {
+        const insecriptions= this.httpClient.get(`http://localhost:8068/SpringMVC/event/getNbiscri/`+id);
+        return insecriptions
+
+    }
 }

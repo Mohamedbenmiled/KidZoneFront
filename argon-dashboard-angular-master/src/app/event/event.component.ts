@@ -4,7 +4,7 @@ import { EventService } from '../event-service';
 import { Eventt } from '../event';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-
+import {Chart} from 'chart.js';
 
 @Component({
   selector: 'app-event',
@@ -12,7 +12,14 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
+  chartlist:number[]=[];
+  textList:String[]=[];
+  charTest:boolean=false;
   listEvent: any;
+  firstvar:any;
+  eventt:Eventt;
+  firstval:number;
+  triEventlist: Eventt[]=[];
   form: boolean = false; 
   event!: Eventt;
   closeliesultl: string;
@@ -20,14 +27,54 @@ export class EventComponent implements OnInit {
   constructor(private eventService: EventService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-   //this.eventService.getEvents();
-   this.eventService.getEvents().subscribe(res =>
-    {this.listEvent =res;
+    
+    //this.eventService.getEvents();
+   this.eventService.getEvents().subscribe((res:Eventt[]) =>
+    {this.listEvent=res;
+      this.listEvent.map((eventt:any)=>{
+        this.chartlist.push(eventt.nbrInscri);
+      this.textList.push(eventt.nom);
+      })
       console.log("hello")
     console.log(res);
+     
+
+      const myChart = new Chart("myChart", {
+        type: 'bar',
+        data: {
+            labels: this.textList,
+            datasets: [{
+                label: '# of Events',
+                data: this.chartlist,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
     })
-
-
     this.event = {
 
       idEvent: null,
@@ -37,6 +84,26 @@ export class EventComponent implements OnInit {
       CategorieEvent: null,
       catt:null
     }
+
+    //chartjs
+    //  console.log("test"+this.listEvent);
+    //  this.eventService.getEvents().subscribe(res =>
+    //   {this.listEvent =res;
+    //    console.log("var" +typeof(this.firstvar));
+    //    //this.firstval=parseInt(this.firstvar);
+    
+       
+      //  console.log("first val : "+this.firstval);
+      //  this.chartlist.push(1);
+      //  this.chartlist.push(3);
+      //  this.chartlist.push(4);
+      //  this.chartlist.push(5);
+      //  this.chartlist.push(1);
+    
+      // })
+      
+     
+
   }
   getEvents(){
    this.eventService.getEvents().subscribe(res =>
@@ -70,7 +137,8 @@ export class EventComponent implements OnInit {
   }
   triEvent(){
     this.eventService.triEvent().subscribe(
-      (data:Eventt[])=> this.listEvent = data
+      (data:Eventt[])=> {this.listEvent = data;
+      }
     );
   }
 
