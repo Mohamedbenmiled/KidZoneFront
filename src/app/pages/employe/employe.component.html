@@ -1,0 +1,146 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<div class="row">
+    <div class="row">
+        <div class="col-md-12">
+            <ng-template #mymodal1 let-modal1>
+               <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title" >Add new Employe</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                        <span aria-hidden="true" (click)="cancel()">×</span>
+                    </button>
+                </div> 
+                
+                    <form>
+                        <div class="modal-body">
+                            <div class="row" class="col-md-5">
+                                <label>Email</label>
+                                <input type="text" [(ngModel)]="employe.email" placeholder="Email Employe" [ngModelOptions]="{standalone : true}" />
+                            </div>
+                            <div class="row" class="col-md-5">
+                                <label>Name</label>
+                                <input type="text" [(ngModel)]="employe.nom" placeholder="Nom Employe" [ngModelOptions]="{standalone : true}" />
+                            </div>
+                            <div class="row" class="col-md-5">
+                                <label>Prenom</label>
+                                <input type="text" [(ngModel)]="employe.prenom" placeholder="Prenom Employe" [ngModelOptions]="{standalone : true}" />
+                            </div>
+                            <div class="row" class="col-md-5">
+                                <label>Telephone</label>
+                                <input type="number" [(ngModel)]="employe.tel" placeholder=" Telephone d'Employe"  [ngModelOptions]="{standalone : true}" />
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" (click)="addEmploye(employe)" (click)="modal1.close('Save click')">Add</button> 
+                            <button type="button" class="btn btn-info" (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                            </div>
+                 
+                    
+                </form>
+            
+           
+
+            </ng-template>
+            
+        </div>
+        </div>
+        </div>
+      
+<!-- affichage tableau employe edit + delete -->
+       <div class="row mt-5"> 
+            <div id="form_login">
+              <div class="card shadow">
+                <div class="card-header border-0">
+                  <div class="row align-items-center">
+                    <div class="col">
+                        
+                       <pre><h3 class="mb-0">All Employes </h3></pre>
+                       <input
+      type="text"
+      class="form-control"
+      placeholder="Search..."
+      [(ngModel)]="filterTerm"
+    /> 
+                    </div>
+                    <div class="col text-right">
+                        <button class="btn btn-sm btn-primary" (click)="open(mymodal1)">Add new Employe</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <!-- Projects table -->
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col" (click)="sort('id_employee')">Employe ID&nbsp; <i class="fa fa-sort"></i></th>
+
+                        <th scope="col">Email</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prenom</th>
+                            <th scope="col">Telephone</th>
+                            <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of listEmployes |  filter: filterTerm | paginate: {itemsPerPage:5,currentPage:p};">
+                            <td>{{p.id_Employee}}</td>
+
+                            <td>{{p.email}}</td> 
+                            <td>{{p.nom}}</td>
+                            <td>{{p.prenom}}</td>
+                            <td>{{p.tel}}</td>
+                            <td><button type="button" class="btn btn-outline-primary"
+                                    (click)="open(mymodal)">edit</button>
+                                <ng-template #mymodal let-modal>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                                        <button type="button" class="close" aria-label="Close"
+                                            (click)="modal.dismiss('Cross click')">
+                                            <span aria-hidden="true" (click)="cancel()">×</span>
+
+                                        </button>
+
+                                    </div>
+                                    <div>
+                        <form>
+                            <div class="modal-body">
+                                <div class="row" class="col-md-5">
+                                    <label>Email</label>
+                                    <input type="text" [(ngModel)]="p.email" [ngModelOptions]="{standalone : true}" />
+                                </div>
+                                <div class="row" class="col-md-5">
+                                    <label>Name</label>
+                                    <input type="text" [(ngModel)]="p.nom" [ngModelOptions]="{standalone : true}" />
+                                </div>
+                                <div class="row" class="col-md-5">
+                                    <label>Prenom</label>
+                                    <input type="text" [(ngModel)]="p.prenom" [ngModelOptions]="{standalone : true}" />
+                                </div>
+                                <div class="row" class="col-md-5">
+                                    <label>Telephone</label>
+                                    <input type="number" [(ngModel)]="p.tel" [ngModelOptions]="{standalone : true}" />
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+
+                                <button class="btn btn-success"(click)="editEmploye(p)" (click)="modal.close('Save click')">Validate</button>
+                                <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" >Cancel</button>
+                            </div>
+                     
+                        </form>
+                </div>
+                </ng-template>
+                <button type="button" class="btn btn-outline-danger"
+                    (click)="deleteEmploye(p.id_Employee)">delete</button>
+            </td>
+        </tr>
+    </tbody>
+                  </table>
+                </div>
+                      <br>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
+            </div>
+            
+          </div>
