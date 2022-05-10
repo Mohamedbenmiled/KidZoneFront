@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div  *ngFor="let Publication of Publications ; index as i;" class="col-md-3 ">
+   
+            <div class=" card p-3" style="width: 18rem;">
+    <img class="d-flex justify-content-between align-items-center" src="assets/{{15}}.jpeg" alt="Card image cap"> 
+    <div class="card-body">
+      <h5 class="card-title">Mohamed Ben Miled</h5> 
+           <td>{{Publication.contenue}}</td>
+          </div>
+      <button (click)="DeletePost(Publication.idPost)" class="btn btn-primary"
+      style="margin-left: 10 px"> Delete </button>
+    </div>
+    </div>
+
+
+

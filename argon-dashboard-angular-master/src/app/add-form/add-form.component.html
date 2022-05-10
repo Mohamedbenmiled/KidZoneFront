@@ -1,0 +1,185 @@
+<!-- <label>add event!!!!</label>
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <h2>ClassRooms</h2>
+   
+    </div>
+     <div><input class="form-control" placeholder="Search" type="text" [(ngModel)]="SearchVal" (keyup)="Search()"></div>
+  </div>
+</div>
+ <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <h2>Add Event</h2>
+
+    </div>
+  </div>
+</div> 
+  
+<div class="row"></div>
+ <div class="card" class="text-center"> 
+
+   <div class="col-md-8" id="htmlData"></div> 
+ <form>
+  <div class="row">
+     
+      <div class="col-md-6">
+           <div>
+            <label>Event name</label>
+            </div>
+            <input matInput placeholder="nom" type="text" [(ngModel)]="Eventt.nom">
+             <input matInput type="text" name="nom"  [(ngModel)]="Eventt.nom" class="form-control"> 
+            
+      </div>
+     
+  </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+        <label>Event iscription number </label>
+         </div>
+          
+          <input matInput type="text" name="nombre inscri"  [(ngModel)]="Eventt.nbrInscri" class="form-control">
+       
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <label>Event date</label>
+        </div>
+         
+          <input matInput type="date" name="date eventt"  [(ngModel)]="Eventt.dateEvent" class="form-control">
+        
+        </div>
+    
+    </div>  
+    <div class="row">
+    <div class="col-md-6">
+                  
+        <label>Select a category</label>
+        <select [(value)]="selectedtype" [(ngModel)]="Eventt.catt">
+          <option>None</option>
+          <option value="sport"> Sport</option>
+          <option value="musique">Music</option>
+          <option value="theatre">Theatre</option>
+        </select>
+    </div>
+  </div>
+    <div>  
+   <a routerLink="/event"><button mat-raised-button type="submit" class="btn btn-danger pull-right" href="http://localhost:4200/#/event" (click)="create()">Create event</button> </a>
+  </div> 
+  <div class="clearfix"></div>
+</form>
+</div>  -->
+
+
+
+<!-- <mat-form-field appearance="fill">
+  <mat-label>Input</mat-label>
+  <input matInput>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Select</mat-label>
+  <mat-select>
+    <mat-option value="one">First option</mat-option>
+    <mat-option value="two">Second option</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Textarea</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field> -->
+<!-- <p>event works!</p> -->
+<html>
+
+<head>
+
+  <!-- <title>event works!</title> -->
+</head>
+
+<body>
+
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <h2>Event</h2>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row"></div>
+  <div class="col-md-12">
+    <div class="card" class="text-center">
+      <div class="col-md-8" id="htmlData"></div>
+      <form>
+        <div class="row">
+
+          <div class="col-md-6">
+            <div>
+              <label>Event name</label>
+            </div>
+            <!-- <input matInput placeholder="nom" type="text" [(ngModel)]="Eventt.nom"> -->
+            <input matInput type="text" name="nom" [(ngModel)]="Eventt.nom" class="form-control">
+
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div>
+              <label>Event iscription number </label>
+            </div>
+
+            <input matInput type="text" name="nombre inscri" [(ngModel)]="Eventt.nbrInscri" class="form-control">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div>
+              <label>Event date</label>
+            </div>
+
+            <input matInput type="date" name="date eventt" [(ngModel)]="Eventt.dateEvent" class="form-control">
+
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+
+            <label>Select a category</label>
+            <select [(value)]="selectedtype" [(ngModel)]="Eventt.catt" class="form-control">
+              <option>None</option>
+              <option value="sport"> Sport</option>
+              <option value="musique">Music</option>
+              <option value="theatre">Theatre</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <a routerLink="/event"><button mat-raised-button type="submit" class="btn btn-danger pull-right"
+              href="http://localhost:4200/#/event" (click)="create()">Create event</button> </a>
+        </div>
+        <div class="clearfix"></div>
+      </form>
+      <!-- <button type="button" class="btn btn-primary btn-lg btn-block" (click)="openPDF()">Download PDF</button> -->
+
+    </div>
+  </div>
+  <!-- <div>
+                <ng-template #content let-modal>
+                  <div class="modal-body">
+                    <app-add-form
+                    (submit)="create($event)"
+                    ></app-add-form>
+                  </div>
+                </ng-template>
+           </div> -->
+
+</body>
+
+</html>

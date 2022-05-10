@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="input-group">
+    
+    <div class="row">
+        <!-- <div *ngIf="(i+1)%4 ==0 ; else elseBlock "> -->
+        <div *ngFor="let categoriepost of categorieposts ; index as i;" class="col-md-3 ">
+          
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="assets/{{i+1}}.png"
+                    alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{categoriepost.label}}</h5>
+                        <td>{{categoriepost.publication}}</td>
+                        <button (click)="Deletecateg(categoriepost.idCategoriePost)" class="btn btn-danger"
+                            style="margin-left: 10 px"> Delete </button>
+                            <td>
+                                <button (click)="pdf(categoriepost.idCategoriePost)">
+
+</button>
+                                </td>
+                    </div>
+
+                </div>
+           
+        </div>
+    </div>
+</div>
