@@ -1,0 +1,77 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <h2>Kids</h2>
+      </div>
+    </div>
+     <div><input class="form-control" placeholder="Search" type="text" [(ngModel)]="SearchVal" (keyup)="SearchEnfant()">
+    </div> 
+  </div>
+    
+
+
+<div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card border-0">
+         <button class="btn btn-danger" (click)="open(content)">
+             Add kid  
+         </button>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">nom</th>
+                      <th scope="col">prenom</th>
+                      <th scope="col">age</th>
+                      <th scope="col">Actions</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let enfant of enfantList">
+                    
+                      <th scope="row">
+                        {{ enfant.idEnfants}}
+                      <td>
+                       {{ enfant.nom }}
+                      </td>
+                      <td>
+                        {{ enfant.prenom }}
+                       </td>
+                      <td>
+                        {{ enfant.age }}
+                       </td>
+                      <td>
+                        <!-- <button class="btn btn-info" (click)='open(content)'>edit</button>  -->
+                        <button class="btn btn-danger" (click)='deleteEnfants(enfant.idEnfant)'>delete</button>
+
+                      </td>
+                     
+                    
+                     
+                    </tr>
+                    <div><tr> <td> <button type="button" href="javascript:void(0)" class="btn btn-danger btn-round" (click)="getEnfantsASC()">ASC</button></td>
+                      <td> <button type="button" href="javascript:void(0)" class="btn btn-info" (click)="getEnfantsDesc()">DESC</button></td></tr></div>
+                    
+                  </tbody>
+                </table>
+              </div>
+        </div>
+      </div>
+
+      <div>
+        <ng-template #content let-modal>
+          <div class="modal-body">
+            <app-add-enfant
+            (submit)="create($event)">
+            </app-add-enfant>
+          </div>
+        </ng-template>
+      </div>
+         
+          </div>
+        </div>
+
+       

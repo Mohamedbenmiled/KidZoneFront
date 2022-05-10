@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add new child</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<div class="modal-body">
+    <div class="row">
+          <mat-form-field>
+            <mat-label>nom</mat-label>
+           <input matInput class="form-control" placeholder="nom" type="text" name="nom" [(ngModel)]="enfant.nom" /> 
+            <mat-label>prenom</mat-label>
+            <input matInput class="form-control" placeholder="prenom" type="text" name="prenom" [(ngModel)]="enfant.prenom" />
+            <mat-label>age</mat-label>
+            <input matInput class="form-control" placeholder="age" type="text" name="age" [(ngModel)]="enfant.age" />
+        </mat-form-field>  
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="block btn btn-outline-dark" (click)="create()">Save</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+</div>
